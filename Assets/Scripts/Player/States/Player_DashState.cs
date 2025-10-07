@@ -36,11 +36,8 @@ public class Player_DashState : EntityState
     public override void Exit()
     {
         base.Exit();
-
         player.SetVelocity(0, 0);
-
         rb.gravityScale = originalGravityScale;
-
     }
 
     private void CanselDahsIfNeeded()

@@ -16,5 +16,8 @@ public class Player_AirState : EntityState
             player.SetVelocity(0, rb.linearVelocity.y);
 
         if (player.wallDetected) stateMachine.ChangeState(player.wallSlideState);
+
+        if (input.Player.Attack.WasPressedThisFrame())
+            stateMachine.ChangeState(player.jumpAttackState);
     }
 }

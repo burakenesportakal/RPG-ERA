@@ -37,6 +37,7 @@ public abstract class EntityState
 
         if (input.Player.Dash.WasPressedThisFrame() && CanDash())
             stateMachine.ChangeState(player.dashState);
+ 
     }
 
     public virtual void Exit()
@@ -51,12 +52,8 @@ public abstract class EntityState
     }
     private bool CanDash()
     {
-        if (player.wallDetected)
+        if (player.wallDetected || stateMachine.currentState == player.dashState || stateMachine.currentState == player.basicAttackState)
             return false;
-        if (stateMachine.currentState == player.dashState)
-            return false;
-
-
         return true;
     }
 }

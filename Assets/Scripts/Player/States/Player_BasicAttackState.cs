@@ -45,6 +45,14 @@ public class Player_BasicAttackState : EntityState
     
     }
 
+
+    public override void Exit()
+    {
+        base.Exit();
+        comboIndex++;
+        lastTimeAttacked = Time.time;
+
+    }
     private void HandleStateExit()
     {
         if (comboAttackQueued)
@@ -54,14 +62,6 @@ public class Player_BasicAttackState : EntityState
         }
         else
             stateMachine.ChangeState(player.idleState);
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-        comboIndex++;
-        lastTimeAttacked = Time.time;
-
     }
 
     private void QueueNextAttack()
