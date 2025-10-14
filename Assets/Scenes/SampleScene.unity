@@ -7311,6 +7311,18 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2628577833176222238, guid: 7a7d6be84b449ac40843dd11a23f7ce4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7316331
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628577833176222238, guid: 7a7d6be84b449ac40843dd11a23f7ce4, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.029189557
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628577833176222238, guid: 7a7d6be84b449ac40843dd11a23f7ce4, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.27540708
+      objectReference: {fileID: 0}
     - target: {fileID: 4441917077859653974, guid: 7a7d6be84b449ac40843dd11a23f7ce4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.95
@@ -7354,6 +7366,10 @@ PrefabInstance:
     - target: {fileID: 5210737687618312253, guid: 7a7d6be84b449ac40843dd11a23f7ce4, type: 3}
       propertyPath: wallCheckDistance
       value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 5210737687618312253, guid: 7a7d6be84b449ac40843dd11a23f7ce4, type: 3}
+      propertyPath: jumpAttackVelocity.y
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 5785561072808325487, guid: 7a7d6be84b449ac40843dd11a23f7ce4, type: 3}
       propertyPath: m_Name

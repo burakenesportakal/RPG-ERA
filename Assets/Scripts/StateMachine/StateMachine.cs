@@ -4,13 +4,13 @@ public class StateMachine
 {
     public EntityState currentState { get; private set; }
 
-    public void Initialize(EntityState startState)
+    public void Initialize(PlayerState startState)
     {
         currentState = startState;
         currentState.Enter();
     }
 
-    public void ChangeState(EntityState newState)
+    public void ChangeState(PlayerState newState)
     {
         currentState.Exit();
         currentState = newState;
