@@ -31,7 +31,6 @@ public class Player_BasicAttackState : PlayerState
         ApplyAttackVelocity();
     }
 
-
     public override void Update()
     {
         base.Update();
@@ -44,7 +43,6 @@ public class Player_BasicAttackState : PlayerState
             HandleStateExit();
     
     }
-
 
     public override void Exit()
     {

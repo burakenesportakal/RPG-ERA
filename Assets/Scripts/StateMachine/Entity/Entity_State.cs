@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class EntityState
+public abstract class Entity_State
 {
     protected StateMachine stateMachine;
     protected string animBoolName;
@@ -12,7 +12,7 @@ public abstract class EntityState
     protected float stateTimer;
     protected bool triggerCalled;
 
-    public EntityState(StateMachine stateMachine, string animBoolName)
+    public Entity_State(StateMachine stateMachine, string animBoolName)
     {
         this.stateMachine = stateMachine;
         this.animBoolName = animBoolName;
@@ -26,6 +26,7 @@ public abstract class EntityState
     public virtual void Update()
     {
         stateTimer -= Time.deltaTime;
+        UpdateAnimationParameters();
  
     }
 
@@ -35,9 +36,14 @@ public abstract class EntityState
 
     }
 
-    public void CallAnimationTrigger()
+    public void AnimationTrigger()
     {
         triggerCalled = true;
+    }
+
+    public virtual void UpdateAnimationParameters()
+    {
+
     }
 
 }

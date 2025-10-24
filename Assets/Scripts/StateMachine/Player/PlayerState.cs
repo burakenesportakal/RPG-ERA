@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class PlayerState : EntityState
+public abstract class PlayerState : Entity_State
 {
     protected Player player;
     protected PlayerInputSet input;
@@ -17,14 +17,19 @@ public abstract class PlayerState : EntityState
     public override void Update()
     {
         base.Update();
-
-        anim.SetFloat("yVelocity", rb.linearVelocity.y);
-
+        
         if (input.Player.Dash.WasPressedThisFrame() && CanDash())
             stateMachine.ChangeState(player.dashState);
 
     }
-    
+
+    public override void UpdateAnimationParameters()
+    {
+        base.UpdateAnimationParameters();
+
+        anim.SetFloat("yVelocity", rb.linearVelocity.y);
+    }
+
     private bool CanDash()
     {
         if (player.wallDetected || stateMachine.currentState == player.dashState || stateMachine.currentState == player.basicAttackState)

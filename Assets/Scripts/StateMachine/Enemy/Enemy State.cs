@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyState : EntityState
+public class EnemyState : Entity_State
 {
     protected Enemy enemy;
     public EnemyState(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(stateMachine, animBoolName)
@@ -10,11 +10,15 @@ public class EnemyState : EntityState
         rb = enemy.rb;
         anim = enemy.anim;
     }
-    public override void Update()
-    {
-        base.Update();
 
-        anim.SetFloat("enemyMoveSpeedMultiplier", enemy.moveAnimSpeedMultiplier);
+    public override void UpdateAnimationParameters()
+    {
+        base.UpdateAnimationParameters();
+
+        float battleAnimSpeedMultiplier = enemy.battleMoveSpeed / enemy.moveSpeed;
+
+        anim.SetFloat("battleAnimSpeedMultiplier", battleAnimSpeedMultiplier);
+        anim.SetFloat("moveAnimSpeedMultiplier", enemy.moveAnimSpeedMultiplier);
         anim.SetFloat("xVelocity", rb.linearVelocity.x);
     }
 }

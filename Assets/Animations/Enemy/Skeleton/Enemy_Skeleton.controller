@@ -17,13 +17,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 1157293231528924904}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: battleAnimSpeedMultiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -193,12 +193,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: enemyMoveSpeedMultiplier
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: attack
     m_Type: 4
     m_DefaultFloat: 0
@@ -213,6 +207,24 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: xVelocity
     m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: moveAnimSpeedMultiplier
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: battleAnimSpeedMultiplier
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: empty
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -314,7 +326,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: enemyMoveSpeedMultiplier
     m_Mirror: 0
-  m_BlendParameter: enemyMoveSpeedMultiplier
+  m_BlendParameter: xVelocity
   m_BlendParameterY: enemyMoveSpeedMultiplier
   m_MinThreshold: -1
   m_MaxThreshold: 1
@@ -361,7 +373,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: a0dae6a206a0dd34291c0b7fd005a7a2, type: 2}
   m_Tag: 
-  m_SpeedParameter: enemyMoveSpeedMultiplier
+  m_SpeedParameter: moveAnimSpeedMultiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
