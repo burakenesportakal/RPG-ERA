@@ -6,6 +6,7 @@ public class Enemy : Entity
     public Enemy_MoveState moveState;
     public Enemy_AttackState attackState;
     public Enemy_BattleState battleState;
+    public Enemy_StunnedState stunnedState;
     public Enemy_DeadState deadState;
 
     [Header("Battle details")]
@@ -20,6 +21,11 @@ public class Enemy : Entity
     public float moveSpeed = 1.4f;
     [Range(0, 2)]
     public float moveAnimSpeedMultiplier = 1;
+
+    [Header("Stunned state details")]
+    public float stunDuration = .7f;
+    public Vector2 stunVelocity;
+
 
     [Header("Player detection")]
     [SerializeField] private LayerMask whatIsPlayer;
