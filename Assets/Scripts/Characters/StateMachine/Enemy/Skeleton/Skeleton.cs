@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Skeleton : Enemy , ICounterable
 {
+    public bool CanBeCountered { get => canBeStunned;}
+
     protected override void Awake()
     {
         base.Awake();
@@ -19,13 +21,6 @@ public class Skeleton : Enemy , ICounterable
         base.Start();
 
         stateMachine.Initialize(idleState);
-    }
-    protected override void Update()
-    {
-        base.Update();
-
-        if (Input.GetKeyUp(KeyCode.F))
-            HandleCounter();
     }
     public void HandleCounter()
     {

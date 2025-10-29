@@ -15,7 +15,6 @@ public class Player_BasicAttackState : PlayerState
     {
         if (comboLimit + 1 != player.attackVelocity.Length)
         {
-            Debug.LogWarning("Adjusted combo limit to match attack velocity array!");
             comboLimit = player.attackVelocity.Length;
         }
     }

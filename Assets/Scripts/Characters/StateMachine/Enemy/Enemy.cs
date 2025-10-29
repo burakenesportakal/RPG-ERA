@@ -25,6 +25,7 @@ public class Enemy : Entity
     [Header("Stunned state details")]
     public float stunDuration = .7f;
     public Vector2 stunVelocity;
+    protected bool canBeStunned;
 
 
     [Header("Player detection")]
@@ -32,6 +33,8 @@ public class Enemy : Entity
     [SerializeField] private Transform playerCheck;
     [SerializeField] private float playerCheckDistance = 10;
     public Transform player { get; private set; }
+
+    public void EnableCounterWindow(bool enable) => canBeStunned = enable;
 
     public override void EntityDeath()
     {
