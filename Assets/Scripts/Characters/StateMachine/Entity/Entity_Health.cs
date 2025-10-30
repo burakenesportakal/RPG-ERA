@@ -1,8 +1,10 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Entity_Health : MonoBehaviour , IDamageble
 {
+    private Slider healthSlider;
     private Entity_VFX entityVFX;
     private Entity entity;
 
@@ -22,8 +24,10 @@ public class Entity_Health : MonoBehaviour , IDamageble
     {
         entityVFX = GetComponent<Entity_VFX>();
         entity = GetComponent<Entity>();
+        healthSlider = GetComponentInChildren<Slider>();
 
         currentHealth = maxHealth;
+        UpdateHealthSlider();
     }
     public virtual void TakeDamage(float damage, Transform damageDealer)
     {
@@ -39,6 +43,7 @@ public class Entity_Health : MonoBehaviour , IDamageble
     protected virtual void ReduceHP(float damage)
     {
         currentHealth -= damage;
+        UpdateHealthSlider();
 
         if (currentHealth <= 0)
             Die();
@@ -48,6 +53,9 @@ public class Entity_Health : MonoBehaviour , IDamageble
         isDead = true;
         entity.EntityDeath();
     }
+
+    private void UpdateHealthSlider() => healthSlider.value = currentHealth / maxHealth;
+
     private Vector2 CalculateKnockback(float damage, Transform damageDealer)
     {
         int direction = transform.position.x > damageDealer.position.x ? 1 : -1;
