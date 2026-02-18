@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +6,9 @@ public class Entity_Health : MonoBehaviour , IDamageble
     private Slider healthSlider;
     private Entity_VFX entityVFX;
     private Entity entity;
+    private Entity_Stats stats;
 
     [SerializeField] protected float currentHealth;
-    [SerializeField] protected float maxHealth = 100;
     [SerializeField] protected bool isDead;
 
     [Header("Knockback Details")]
@@ -25,13 +24,15 @@ public class Entity_Health : MonoBehaviour , IDamageble
         entityVFX = GetComponent<Entity_VFX>();
         entity = GetComponent<Entity>();
         healthSlider = GetComponentInChildren<Slider>();
+        stats = GetComponent<Entity_Stats>();
 
-        currentHealth = maxHealth;
+        currentHealth = stats.GetMaxHealth();
         UpdateHealthSlider();
     }
-    public virtual void TakeDamage(float damage, Transform damageDealer)
+    public virtual bool TakeDamage(float damage, Transform damageDealer)
     {
-        if (isDead) return;
+        if (isDead) return false;
+        if (AttackEvaded()) return false;
 
         Vector2 knockback = CalculateKnockback(damage, damageDealer);
         float duration = CalculateDuration(damage);
@@ -39,7 +40,12 @@ public class Entity_Health : MonoBehaviour , IDamageble
         entity?.ReciveKnockback(knockback, duration);
         entityVFX?.PlayOnDamageVFX();
         ReduceHP(damage);
+        return true;
     }
+
+    private bool AttackEvaded() => Random.Range(0, 100) < stats.GetEvasion();
+   
+
     protected virtual void ReduceHP(float damage)
     {
         currentHealth -= damage;
@@ -54,7 +60,7 @@ public class Entity_Health : MonoBehaviour , IDamageble
         entity.EntityDeath();
     }
 
-    private void UpdateHealthSlider() => healthSlider.value = currentHealth / maxHealth;
+    private void UpdateHealthSlider() => healthSlider.value = currentHealth / stats.GetMaxHealth();
 
     private Vector2 CalculateKnockback(float damage, Transform damageDealer)
     {
@@ -65,5 +71,5 @@ public class Entity_Health : MonoBehaviour , IDamageble
         return knockback;
     }
     private float CalculateDuration(float damage) => IsHeavyDamage(damage) ? heavyKnockbackDuration : knockbackDuration;
-    private bool IsHeavyDamage(float damage) => damage / maxHealth > heavyDamageThreshold;
+    private bool IsHeavyDamage(float damage) => damage / stats.GetMaxHealth() > heavyDamageThreshold;
 }

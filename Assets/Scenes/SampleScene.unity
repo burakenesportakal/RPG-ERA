@@ -7224,6 +7224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 2142732736313764176, guid: 45ce071e37cfeaf43b8a8f434b344f6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2143368248018218547, guid: 45ce071e37cfeaf43b8a8f434b344f6e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2464604
@@ -7389,8 +7393,57 @@ MonoBehaviour:
   onDamageMaterial: {fileID: 2100000, guid: b98f31dc798615347afb8ebf9b7fc9b4, type: 2}
   onDamageVFXDuration: 0.2
   hitVFXColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+  critHitVFXColor: {r: 1, g: 0, b: 0, a: 1}
   hitVFX: {fileID: 6681722568731125618, guid: 0acff564dcc758d4a8c502a31ef6ad45, type: 3}
+  critHitVFX: {fileID: 9156035180637840138, guid: 322cdfddfed5ed5488b175e6ded8f0df, type: 3}
   attackAlert: {fileID: 885951235}
+--- !u!114 &1347584946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347584937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c674f64911a9082408f8d71b4d27700d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 1000000
+  majorStats:
+    strength:
+      baseValue: 0
+    agility:
+      baseValue: 0
+    intelligence:
+      baseValue: 0
+    vitality:
+      baseValue: 0
+  offenseStat:
+    damage:
+      baseValue: 100
+    critPower:
+      baseValue: 150
+    critChance:
+      baseValue: 100
+    fireDamage:
+      baseValue: 0
+    iceDamage:
+      baseValue: 0
+    lightningDamage:
+      baseValue: 0
+  defenseStat:
+    armor:
+      baseValue: 0
+    evasion:
+      baseValue: 0
+    fireResistance:
+      baseValue: 0
+    iceResistance:
+      baseValue: 0
+    lightningResistance:
+      baseValue: 0
 --- !u!1 &1405520482
 GameObject:
   m_ObjectHideFlags: 0
@@ -8259,7 +8312,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 100
   isDead: 0
   knockbackPower: {x: 1.5, y: 4}
   heavyKnockbackPower: {x: 7, y: 7}
@@ -8281,7 +8333,9 @@ MonoBehaviour:
   onDamageMaterial: {fileID: 2100000, guid: b98f31dc798615347afb8ebf9b7fc9b4, type: 2}
   onDamageVFXDuration: 0.3
   hitVFXColor: {r: 0.8867924, g: 0.8867924, b: 0, a: 1}
+  critHitVFXColor: {r: 1, g: 0, b: 0, a: 1}
   hitVFX: {fileID: 6681722568731125618, guid: 0acff564dcc758d4a8c502a31ef6ad45, type: 3}
+  critHitVFX: {fileID: 9156035180637840138, guid: 322cdfddfed5ed5488b175e6ded8f0df, type: 3}
 --- !u!114 &2004324994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8300,8 +8354,54 @@ MonoBehaviour:
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 256
-  attackDamage: 10
   counterRecovery: 0.5
+--- !u!114 &2004324995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004324984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c674f64911a9082408f8d71b4d27700d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 10000
+  majorStats:
+    strength:
+      baseValue: 0
+    agility:
+      baseValue: 0
+    intelligence:
+      baseValue: 0
+    vitality:
+      baseValue: 0
+  offenseStat:
+    damage:
+      baseValue: 100
+    critPower:
+      baseValue: 150
+    critChance:
+      baseValue: 100
+    fireDamage:
+      baseValue: 0
+    iceDamage:
+      baseValue: 0
+    lightningDamage:
+      baseValue: 0
+  defenseStat:
+    armor:
+      baseValue: 0
+    evasion:
+      baseValue: 0
+    fireResistance:
+      baseValue: 0
+    iceResistance:
+      baseValue: 0
+    lightningResistance:
+      baseValue: 0
 --- !u!1 &2007192237
 GameObject:
   m_ObjectHideFlags: 0
@@ -8599,6 +8699,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5785561072808325487, guid: 7a7d6be84b449ac40843dd11a23f7ce4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2004324994}
+    - targetCorrespondingSourceObject: {fileID: 5785561072808325487, guid: 7a7d6be84b449ac40843dd11a23f7ce4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2004324995}
   m_SourcePrefab: {fileID: 100100000, guid: 7a7d6be84b449ac40843dd11a23f7ce4, type: 3}
 --- !u!1001 &4994813385799147107
 PrefabInstance:
@@ -8679,6 +8782,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1405135429849873552, guid: 7d9bf3d0e98ea7846b35bed1335898db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1347584945}
+    - targetCorrespondingSourceObject: {fileID: 1405135429849873552, guid: 7d9bf3d0e98ea7846b35bed1335898db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1347584946}
     - targetCorrespondingSourceObject: {fileID: 570865602572153882, guid: 7d9bf3d0e98ea7846b35bed1335898db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 509347210}

@@ -15,7 +15,7 @@ public class Chest : MonoBehaviour, IDamageble
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    public void TakeDamage(float damage, Transform damageDealer)
+    public bool TakeDamage(float damage, Transform damageDealer)
     {
         Vector2 chestColliderSize = boxCollider.size;
         Vector2 chestColliderOffset = boxCollider.offset;
@@ -36,12 +36,13 @@ public class Chest : MonoBehaviour, IDamageble
                 chestVFX.PlayOnDamageVFX();
                 rb.linearVelocity = chestOpeningVelocity;
             }
-            return;
+            return true;
         }
 
         chestVFX.PlayOnDamageVFX();
         isOpened = true;
         animator.SetBool("chestOpen", true);
         rb.linearVelocity = chestOpeningVelocity;
+        return true;
     }
 }

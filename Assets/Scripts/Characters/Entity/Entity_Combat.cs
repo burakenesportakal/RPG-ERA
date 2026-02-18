@@ -3,27 +3,31 @@ using UnityEngine;
 public class Entity_Combat : MonoBehaviour
 {
     private Entity_VFX entityVFX;
+    private Entity_Stats stats;
     public Collider2D[] targetColliders;
 
     [Header("Target Detection")]
     [SerializeField] private Transform targetCheck;
     [SerializeField] private float targetCheckRadius;
     [SerializeField] LayerMask whatIsTarget;
-
-    [Header("Combat Details")]
-    [SerializeField] private float attackDamage = 10;
-
     private void Awake()
     {
         entityVFX = GetComponent<Entity_VFX>();
+        stats = GetComponent<Entity_Stats>();
     }
     public void PerformAttack()
     {
         foreach(var target in GetDetectedColliders())
         {
             IDamageble damageble = target.GetComponent<IDamageble>();
-            damageble?.TakeDamage(attackDamage, transform);
-            entityVFX.CreateOnHitVFX(target.transform);
+
+            if (damageble == null) continue;
+
+            bool isCrit;
+            float damage = stats.GetPhyiscalDamage(out isCrit);
+            bool targetGotHit = damageble.TakeDamage(damage, transform);
+            if (targetGotHit)
+                entityVFX.CreateOnHitVFX(target.transform,isCrit);
         }
     }
 
