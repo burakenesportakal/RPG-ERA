@@ -15,7 +15,7 @@ public class Chest : MonoBehaviour, IDamageble
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    public bool TakeDamage(float damage, Transform damageDealer)
+    public bool TakeDamage(float damage,float elementalDamage, ElementType elementType, Transform damageDealer)
     {
         Vector2 chestColliderSize = boxCollider.size;
         Vector2 chestColliderOffset = boxCollider.offset;

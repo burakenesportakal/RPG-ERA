@@ -28,6 +28,7 @@ public class Entity : MonoBehaviour
     //Knockback variables
     private bool iSKnocked;
     private Coroutine knockbackCoroutine;
+    private Coroutine slowDownCoroutine;
 
     protected virtual void Awake()
     {
@@ -109,5 +110,18 @@ public class Entity : MonoBehaviour
 
         if(secondaryWallCheck != null)
             Gizmos.DrawLine(secondaryWallCheck.position, secondaryWallCheck.position + new Vector3(wallCheckDistance*facingDirection,0));
+    }
+
+    public virtual void SlowDownEntity(float duration, float slowMultiplier)
+    {
+        if (slowDownCoroutine != null)
+            StopCoroutine(slowDownCoroutine);
+
+        slowDownCoroutine = StartCoroutine(SlowDownEntityCoroutine(duration, slowMultiplier));
+    }
+
+    protected virtual IEnumerator SlowDownEntityCoroutine(float duration, float slowMultiplier)
+    {
+        yield return null;
     }
 }
