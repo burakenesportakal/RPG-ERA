@@ -7397,6 +7397,7 @@ MonoBehaviour:
   hitVFX: {fileID: 6681722568731125618, guid: 0acff564dcc758d4a8c502a31ef6ad45, type: 3}
   critHitVFX: {fileID: 9156035180637840138, guid: 322cdfddfed5ed5488b175e6ded8f0df, type: 3}
   IceEffectVFXColor: {r: 0, g: 0.60784316, b: 1, a: 1}
+  FireEffectVFXColor: {r: 0.74509805, g: 0.21894674, b: 0, a: 1}
   attackAlert: {fileID: 885951235}
 --- !u!114 &1347584946
 MonoBehaviour:
@@ -8352,6 +8353,7 @@ MonoBehaviour:
   hitVFX: {fileID: 6681722568731125618, guid: 0acff564dcc758d4a8c502a31ef6ad45, type: 3}
   critHitVFX: {fileID: 9156035180637840138, guid: 322cdfddfed5ed5488b175e6ded8f0df, type: 3}
   IceEffectVFXColor: {r: 0, g: 0.60784316, b: 1, a: 1}
+  FireEffectVFXColor: {r: 0.7433963, g: 0.21960784, b: 0, a: 1}
 --- !u!114 &2004324994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8406,9 +8408,9 @@ MonoBehaviour:
     armorReduction:
       baseValue: 0
     fireDamage:
-      baseValue: 0
+      baseValue: 1
     iceDamage:
-      baseValue: 10
+      baseValue: 0
     lightningDamage:
       baseValue: 0
   defenseStat:

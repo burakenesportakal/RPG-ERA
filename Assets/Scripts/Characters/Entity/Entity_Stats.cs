@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Entity_Stats : MonoBehaviour
 {
-    [SerializeField] private Stat maxHealth;
-    [SerializeField] private Stat_Major majorStats;
-    [SerializeField] private Stat_Offense offenseStat;
-    [SerializeField] private Stat_Defense defenseStat;
+    [SerializeField] public Stat maxHealth;
+    [SerializeField] public Stat_Major majorStats;
+    [SerializeField] public Stat_Offense offenseStat;
+    [SerializeField] public Stat_Defense defenseStat;
 
 
-    public float GetPhyiscalDamage(out bool isCrit)
+    public float GetPhyiscalDamage(out bool isCrit, float scaleFactor = 1)
     {
         float baseDamage = offenseStat.damage.GetValue();
         float bonusDamage = majorStats.strength.GetValue(); //each strength point gives 1 extra damage
@@ -24,7 +24,7 @@ public class Entity_Stats : MonoBehaviour
 
         isCrit = Random.Range(0, 100) < critChance;
         float finalDamage = isCrit ? totalBaseDamage * critPowerMultiplier : totalBaseDamage;
-        return finalDamage;
+        return finalDamage * scaleFactor;
     }
 
     public float GetMaxHealth()
@@ -72,7 +72,7 @@ public class Entity_Stats : MonoBehaviour
         return finalReduction;
     }
 
-    public float GetElementalDamage(out ElementType elementType)
+    public float GetElementalDamage(out ElementType elementType, float scaleFactor = 1)
     {
         float fireDamage = offenseStat.fireDamage.GetValue();
         float iceDamage = offenseStat.iceDamage.GetValue();
@@ -106,7 +106,7 @@ public class Entity_Stats : MonoBehaviour
         float weakerElementsDamage = bonusIceDamage + bonusFireDamage + bonusLightningDamage;
         float finalElementalDamage = highestElementalDamage + bonusElementalDamage + weakerElementsDamage;
 
-        return finalElementalDamage;
+        return finalElementalDamage * scaleFactor;
     }
 
     public float GetElementalResistance(ElementType elementType)

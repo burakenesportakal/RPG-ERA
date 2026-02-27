@@ -21,6 +21,7 @@ public class Entity_VFX : MonoBehaviour
 
     [Header("Element Colors")]
     [SerializeField] private Color IceEffectVFXColor = Color.cyan;
+    [SerializeField] private Color FireEffectVFXColor = Color.red;
     private Color originalHitVFXColor;
     private Color originalCritHitVFXColor;
 
@@ -79,6 +80,8 @@ public class Entity_VFX : MonoBehaviour
     {
         if (elementType == ElementType.Ice)
             StartCoroutine(PlayStatusEffectVFXCoroutine(duration, IceEffectVFXColor));
+        if (elementType == ElementType.Fire)
+            StartCoroutine(PlayStatusEffectVFXCoroutine(duration, FireEffectVFXColor));
     }
 
     private IEnumerator PlayStatusEffectVFXCoroutine( float duration, Color effectColor)
