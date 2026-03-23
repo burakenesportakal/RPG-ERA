@@ -67,7 +67,7 @@
       </ul>
     </td>
     <td width="50%" valign="top">
-      <h3>🔜 Narrative & World <i>(Optional)</i></h3>
+      <h3>🔜 Narrative & World </h3>
       <ul>
         <li>⬜ <strong>Quest Engine:</strong> Main storyline and side quest tracking.</li>
         <li>⬜ <strong>Dialogue System:</strong> NPC interactions with branching choices.</li>
